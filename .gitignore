@@ -1,0 +1,12 @@
+# Common folder
+ML Project Details.pdf
+package-lock.json
+
+# Backend folder
+Backend/node_modules
+Dockerfile
+
+# Frontend folder
+Frontend/frontend/node_modules
+Frontend/frontend/Dockerfile
+Frontend/frontend/README.md
