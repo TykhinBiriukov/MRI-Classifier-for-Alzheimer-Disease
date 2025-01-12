@@ -1,0 +1,5 @@
+epoch 0:
+Train loss: 0.84784 | Test loss: 0.76846 | Test acc: 66.75% [18:31:29]
+
+
+Weights saved to model_weights_v3_e0.pt

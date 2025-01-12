@@ -1,0 +1,39 @@
+epoch 0:
+Train loss: 0.84294 | Test loss: 0.76562 | Test acc: 66.82% [18:48:28]
+
+
+Weights saved to model_weights_v4_e0.pt
+epoch 1:
+Train loss: 0.84334 | Test loss: 0.77126 | Test acc: 66.48% [18:58:02]
+epoch 2:
+Train loss: 0.84434 | Test loss: 0.76953 | Test acc: 66.69% [19:07:32]
+epoch 3:
+Train loss: 0.83907 | Test loss: 0.76361 | Test acc: 66.76% [19:17:03]
+epoch 4:
+Train loss: 0.83848 | Test loss: 0.75690 | Test acc: 66.97% [19:26:33]
+epoch 5:
+Train loss: 0.84250 | Test loss: 0.75949 | Test acc: 66.84% [19:36:03]
+
+
+Weights saved to model_weights_v4_e5.pt
+epoch 6:
+Train loss: 0.84418 | Test loss: 0.75646 | Test acc: 66.90% [19:45:32]
+epoch 7:
+Train loss: 0.83332 | Test loss: 0.75926 | Test acc: 66.94% [19:55:00]
+epoch 8:
+Train loss: 0.83855 | Test loss: 0.76104 | Test acc: 66.89% [20:04:29]
+epoch 9:
+Train loss: 0.84449 | Test loss: 0.75726 | Test acc: 67.23% [20:13:58]
+epoch 10:
+Train loss: 0.83855 | Test loss: 0.75544 | Test acc: 67.30% [20:23:26]
+
+
+Weights saved to model_weights_v4_e10.pt
+epoch 11:
+Train loss: 0.83649 | Test loss: 0.75969 | Test acc: 66.71% [20:32:54]
+epoch 12:
+Train loss: 0.83846 | Test loss: 0.76104 | Test acc: 66.83% [20:42:21]
+epoch 13:
+Train loss: 0.83732 | Test loss: 0.75830 | Test acc: 67.24% [20:51:49]
+epoch 14:
+Train loss: 0.83337 | Test loss: 0.75940 | Test acc: 67.00% [21:01:16]
