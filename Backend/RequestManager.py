@@ -43,7 +43,7 @@ def call_model(image) -> str: # recive image location
         output = loaded_model(input_tensor)
         predicted_class = output.argmax(dim=1).item()
 
-    result_map = {0: "ClassA", 1: "ClassB", 2: "ClassC", 3: "ClassD"} # define classes for used dataset
+    result_map = {0: "Stage 2", 1: "Stage 3", 2: "Healthy", 3: "Stage 1"} # define classes for used dataset
     result_class = result_map[predicted_class]
     print("Predicted class:", result_class)
 
