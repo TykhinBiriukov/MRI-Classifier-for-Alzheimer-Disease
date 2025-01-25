@@ -26,7 +26,7 @@ def get_normalization_values(image) -> Tuple[np.ndarray, np.ndarray]:
 
 # Model loading, processing image and returning string with class
 def call_model(image) -> str: # recive image location
-    loaded_model = torch.load("model_file1.pt")
+    loaded_model = torch.load("model_99_acc.pt")
     loaded_model.eval()
 
     mean_np, std_np = get_normalization_values(image)
