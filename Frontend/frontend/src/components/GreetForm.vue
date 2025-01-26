@@ -3,34 +3,22 @@ export default {
   data() {
     return {
       name: '',
-      greeting: '',
+      diagnose: '',
     };
   },
   methods: {
-    async sayHello() {
+
+    async process() {
       try {
-        const response = await fetch('http://localhost:5000/greet', {
+        const response = await fetch('http://localhost:5000/process', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ name: this.name }),
         });
         const data = await response.json();
-        this.greeting = data;
+        this.diagnose = data;
       } catch (error) {
-        console.error('Error fetching greeting:', error);
-      }
-    },
-    async sayGoodbye() {
-      try {
-        const response = await fetch('http://localhost:5000/goodbye', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name: this.name }),
-        });
-        const data = await response.json();
-        this.greeting = data; 
-      } catch (error) {
-        console.error('Error fetching greeting:', error);
+        console.error('Error fetching diagnose:', error);
       }
     },
     
@@ -71,13 +59,11 @@ export default {
 
 <template>
   <div>
-    <h1>Enter Your Name</h1>
+    <h1>To see result upload x-ray and push the button</h1>
     <div flex gap-2>
-      <input type="text" v-model="name" placeholder="Your name" />
-      <button @click="sayHello">Hello</button>
-      <button @click="sayGoodbye">Goodbye</button>
+      <button @click="process">Get diagnose</button>
     </div>
-    <h2 v-if="greeting">{{ greeting }}</h2>
+    <h2 v-if="diagnose">{{ diagnose }}</h2>
 
     <div grid gap-4>
       <h1>Upload an Image</h1>

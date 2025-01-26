@@ -3,6 +3,7 @@ const multer = require('multer');
 const path = require('path');
 const cors = require('cors');
 const app = express();
+const fs = require('fs');
 
 app.use(cors()); 
 app.use(express.json());
@@ -11,8 +12,7 @@ const callPythonScript = async (route, name) => {
     const spawner = require('child_process').spawn;
 
     return new Promise((resolve, reject) => {
-        const pythonProcess = spawner('python', ['./RequestManager.py', JSON.stringify(route), JSON.stringify(name)]);
-
+        const pythonProcess = spawner('myenv\\Scripts\\python', ['./RequestManager.py', JSON.stringify(route), JSON.stringify(name)]);
         pythonProcess.stdout.on('data', (data) => {
             console.log('Data received from python script:', data.toString());
             resolve(data.toString()); // Resolve the promise with the data
@@ -29,20 +29,29 @@ const callPythonScript = async (route, name) => {
     });
 };
 
-app.post('/greet', async (req, res) => {
-    const { name } = req.body;
-    try {
-        const response = await callPythonScript('greet', name);
-        res.json(response);
-    } catch (error) {
-        res.status(500).json({ error: error.toString() });
-    }
-});
+const clearUploadsFolder = (folderPath) => {
+    fs.readdir(folderPath, (err, files) => {
+        if (err) {
+            console.error(`Directory can not be reached: ${err}`);
+            return;
+        }
+        files.forEach((file) => {
+            const filePath = path.join(folderPath, file);
+            fs.unlink(filePath, (err) => {
+                if (err) {
+                    console.error(`The error while trying to delete ${file}: ${err}`);
+                } else {
+                    console.log(`The file ${file} deleted`);
+                }
+            });
+        });
+    });
+};
 
-app.post('/goodbye', async (req, res) => {
-    const { name } = req.body;
+app.post('/process', async (req, res) => {
     try {
-        const response = await callPythonScript('goodbye', name);
+        const response = await callPythonScript('process');
+        clearUploadsFolder("uploads/");
         res.json(response);
     } catch (error) {
         res.status(500).json({ error: error.toString() });
@@ -51,13 +60,14 @@ app.post('/goodbye', async (req, res) => {
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'uploads/'); // Папка для сохранения файлов
+        cb(null, 'uploads/');
     },
     filename: (req, file, cb) => {
-        cb(null, file.originalname); // Уникальное имя файла
+        cb(null, file.originalname);
     },
 });
-  
+
+
 const upload = multer({ storage });
   
 app.post('/upload', upload.single('image'), (req, res) => {
