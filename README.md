@@ -2,7 +2,7 @@
 
 This project implements a CNN using transfer learning to classify MRI images into one of four categories: Healthy, Mild, Moderate, or Severe Alzheimer's. It was developed as part of a university course by a team of three students. 
 
-[*View the working repository*](https://github.com/EgorPichugin/MLproject) 
+[*View original working repository*](https://github.com/EgorPichugin/MLproject) 
 
 My Contribution:
 - Model Training
